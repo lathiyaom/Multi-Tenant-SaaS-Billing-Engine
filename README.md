@@ -53,6 +53,20 @@ Use env vars for DB credentials:
 - `PUT /api/v1/tenants/{tenantId}`
 - `DELETE /api/v1/tenants/{tenantId}`
 
+## Plan APIs (v1)
+- `POST /api/v1/plans`
+- `GET /api/v1/plans?tenantId={tenantId}`
+- `GET /api/v1/plans/{planId}`
+- `PUT /api/v1/plans/{planId}`
+- `DELETE /api/v1/plans/{planId}`
+
+## Subscription APIs (v1)
+- `POST /api/v1/subscriptions`
+- `GET /api/v1/subscriptions?tenantId={tenantId}`
+- `GET /api/v1/subscriptions/{subscriptionId}`
+- `PUT /api/v1/subscriptions/{subscriptionId}/status`
+- `POST /api/v1/subscriptions/{subscriptionId}/cancel`
+
 ## Branch + PR Strategy (Step-by-step)
 1. `main` stays stable.
 2. Create one branch per feature area.
