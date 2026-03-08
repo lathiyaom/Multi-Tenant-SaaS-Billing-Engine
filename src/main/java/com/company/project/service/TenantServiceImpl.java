@@ -4,7 +4,7 @@ import com.company.project.dto.CreateTenantRequest;
 import com.company.project.dto.TenantResponse;
 import com.company.project.dto.UpdateTenantRequest;
 import com.company.project.entity.Tenant;
-import com.company.project.exception.DuplicateTenantException;
+import com.company.project.exception.DuplicateResourceException;
 import com.company.project.exception.TenantNotFoundException;
 import com.company.project.mapper.TenantMapper;
 import com.company.project.repository.TenantRepository;
@@ -30,10 +30,10 @@ public class TenantServiceImpl implements TenantService {
     @Override
     public TenantResponse create(CreateTenantRequest request) {
         if (tenantRepository.existsByName(request.name().trim())) {
-            throw new DuplicateTenantException("Tenant name already exists: " + request.name());
+            throw new DuplicateResourceException("Tenant name already exists: " + request.name());
         }
         if (tenantRepository.existsBySlug(request.slug().trim())) {
-            throw new DuplicateTenantException("Tenant slug already exists: " + request.slug());
+            throw new DuplicateResourceException("Tenant slug already exists: " + request.slug());
         }
 
         Tenant tenant = tenantMapper.toEntity(request);
@@ -66,10 +66,10 @@ public class TenantServiceImpl implements TenantService {
         String normalizedSlug = request.slug().trim();
 
         if (!tenant.getName().equals(normalizedName) && tenantRepository.existsByName(normalizedName)) {
-            throw new DuplicateTenantException("Tenant name already exists: " + normalizedName);
+            throw new DuplicateResourceException("Tenant name already exists: " + normalizedName);
         }
         if (!tenant.getSlug().equals(normalizedSlug) && tenantRepository.existsBySlug(normalizedSlug)) {
-            throw new DuplicateTenantException("Tenant slug already exists: " + normalizedSlug);
+            throw new DuplicateResourceException("Tenant slug already exists: " + normalizedSlug);
         }
 
         tenantMapper.updateEntity(tenant, request);
