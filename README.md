@@ -46,6 +46,13 @@ Use env vars for DB credentials:
 - App health: `/api/v1/health`
 - Actuator health: `/actuator/health`
 
+## Tenant APIs (v1)
+- `POST /api/v1/tenants`
+- `GET /api/v1/tenants`
+- `GET /api/v1/tenants/{tenantId}`
+- `PUT /api/v1/tenants/{tenantId}`
+- `DELETE /api/v1/tenants/{tenantId}`
+
 ## Branch + PR Strategy (Step-by-step)
 1. `main` stays stable.
 2. Create one branch per feature area.
